@@ -46,8 +46,7 @@ public class MeasurementController {
 
             throw new MeasurementNotAddedException(errorMsg.toString());
         }
-        Measurement measurement = convertToSensor(measurementDTO);
-        measurementService.add(measurement);
+        measurementService.add(convertToMeasurement(measurementDTO));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -70,7 +69,7 @@ public class MeasurementController {
     }
 
 
-    private Measurement convertToSensor(MeasurementDTO measurementDTO) {
+    private Measurement convertToMeasurement(MeasurementDTO measurementDTO) {
         return modelMapper.map(measurementDTO, Measurement.class);
     }
 }
