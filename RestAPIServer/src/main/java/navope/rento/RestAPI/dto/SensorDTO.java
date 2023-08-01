@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class SensorDTO {
 
-    @NotNull
+    @NotNull(message = "Sensor name must not be null")
     @Size(min = 3, max = 30, message = "Sensor name length must be between 3 and 30")
     private String name;
 

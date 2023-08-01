@@ -5,6 +5,7 @@ import navope.rento.RestAPI.repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class SensorService {
         this.sensorRepository = sensorRepository;
     }
 
+    @Transactional
     public void register(Sensor sensor) {
         sensor.setRegisteredAt(new Date());
         sensorRepository.save(sensor);

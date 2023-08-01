@@ -1,18 +1,20 @@
 package navope.rento.RestAPI.dto;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class MeasurementDTO {
 
-    @Size(min = -100, max = 100, message = "Value must be between -100 and 100")
+    @Range(min = -100, max = 100, message = "Value must be between -100 and 100")
     private double value;
 
     @NotNull
     private Boolean raining;
 
     @NotNull
-    private SensorDTO sensorDTO;
+    private SensorDTO sensor;
 
     public MeasurementDTO() {
     }
@@ -33,11 +35,11 @@ public class MeasurementDTO {
         this.raining = raining;
     }
 
-    public SensorDTO getSensorDTO() {
-        return sensorDTO;
+    public SensorDTO getSensor() {
+        return sensor;
     }
 
-    public void setSensorDTO(SensorDTO sensorDTO) {
-        this.sensorDTO = sensorDTO;
+    public void setSensor(SensorDTO sensor) {
+        this.sensor = sensor;
     }
 }

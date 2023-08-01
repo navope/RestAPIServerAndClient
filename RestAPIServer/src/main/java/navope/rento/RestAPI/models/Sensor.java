@@ -15,7 +15,7 @@ public class Sensor {
     @Column(name = "id")
     private int id;
 
-    @NotNull
+    @NotNull(message = "Sensor name must not be null")
     @Size(min = 3, max = 30, message = "Sensor name length must be between 3 and 30")
     @Column(name ="name")
     private String name;
@@ -64,4 +64,5 @@ public class Sensor {
     public void setRegisteredAt(Date registeredAt) {
         this.registeredAt = registeredAt;
     }
+
 }

@@ -1,5 +1,7 @@
 package navope.rento.RestAPI.models;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,7 +16,7 @@ public class Measurement {
     @Column(name = "id")
     private int id;
 
-    @Size(min = -100, max = 100, message = "Value must be between -100 and 100")
+    @Range(min = -100, max = 100, message = "Value must be between -100 and 100")
     @Column(name = "value")
     private double value;
 
@@ -77,4 +79,5 @@ public class Measurement {
     public void setAddedAt(Date addedAt) {
         this.addedAt = addedAt;
     }
+
 }

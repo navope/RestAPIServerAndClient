@@ -45,7 +45,7 @@ public class SensorController {
             List<FieldError> errors = bindingResult.getFieldErrors();
             for (FieldError error : errors) {
                 errorMsg.append(error.getField()).append(" - ").append(error.getDefaultMessage())
-                        .append(";\n");
+                        .append(";");
             }
 
             throw new SensorNotRegisteredException(errorMsg.toString());
