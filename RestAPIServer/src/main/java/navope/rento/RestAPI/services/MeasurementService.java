@@ -31,11 +31,14 @@ public class MeasurementService {
         }
         measurement.setSensor(sensorService.getSensor(sensorName).get());
         measurement.setAddedAt(new Date());
-        System.out.println(measurement);
         measurementRepository.save(measurement);
     }
 
     public List<Measurement> getMeasurements() {
         return measurementRepository.findAll();
+    }
+
+    public long getNumberOfRainyDays(){
+        return measurementRepository.countMeasurementByRaining(true);
     }
 }
