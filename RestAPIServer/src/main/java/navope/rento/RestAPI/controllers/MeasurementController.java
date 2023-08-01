@@ -3,10 +3,7 @@ package navope.rento.RestAPI.controllers;
 import navope.rento.RestAPI.dto.MeasurementDTO;
 import navope.rento.RestAPI.models.Measurement;
 import navope.rento.RestAPI.services.MeasurementService;
-import navope.rento.RestAPI.util.MeasurementNotAddedException;
-import navope.rento.RestAPI.util.SensorErrorResponse;
-import navope.rento.RestAPI.util.SensorNotFoundException;
-import navope.rento.RestAPI.util.SensorNotRegisteredException;
+import navope.rento.RestAPI.util.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,8 +48,8 @@ public class MeasurementController {
     }
 
     @ExceptionHandler
-    private ResponseEntity<SensorErrorResponse> handlerException(MeasurementNotAddedException e) {
-        SensorErrorResponse response = new SensorErrorResponse(
+    private ResponseEntity<MeasurementErrorResponse> handlerException(MeasurementNotAddedException e) {
+        MeasurementErrorResponse response = new MeasurementErrorResponse(
                 e.getMessage(),
                 System.currentTimeMillis()
         );
