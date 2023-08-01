@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/measurement")
@@ -27,6 +28,13 @@ public class MeasurementController {
                                  MeasurementService measurementService) {
         this.modelMapper = modelMapper;
         this.measurementService = measurementService;
+    }
+
+    @GetMapping()
+    private List<MeasurementDTO> getMeasurements() {
+        return measurementService.getMeasurements().stream()
+                .map(this::convertToMeasurementDTO)
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/add")
@@ -68,5 +76,8 @@ public class MeasurementController {
 
     private Measurement convertToMeasurement(MeasurementDTO measurementDTO) {
         return modelMapper.map(measurementDTO, Measurement.class);
+    }
+    private MeasurementDTO convertToMeasurementDTO(Measurement measurement) {
+        return modelMapper.map(measurement, MeasurementDTO.class);
     }
 }

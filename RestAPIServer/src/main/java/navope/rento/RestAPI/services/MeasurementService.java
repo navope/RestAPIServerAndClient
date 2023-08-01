@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class MeasurementService {
@@ -32,5 +33,9 @@ public class MeasurementService {
         measurement.setAddedAt(new Date());
         System.out.println(measurement);
         measurementRepository.save(measurement);
+    }
+
+    public List<Measurement> getMeasurements() {
+        return measurementRepository.findAll();
     }
 }
