@@ -23,7 +23,6 @@ public class Sensor {
     @OneToMany(mappedBy = "sensor")
     private List<Measurement> measurements;
 
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "registered_at")
     private Date registeredAt;

@@ -18,7 +18,6 @@ public class Measurement {
     @Column(name = "value")
     private double value;
 
-    @NotNull
     @Column(name = "raining")
     private Boolean raining;
 
