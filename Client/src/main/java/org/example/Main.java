@@ -48,7 +48,8 @@ public class Main {
         }
 
         //Getting measurement
-        ParameterizedTypeReference<List<MeasurementDTO>> typeReference = new ParameterizedTypeReference<List<MeasurementDTO>>() {};
+        ParameterizedTypeReference<List<MeasurementDTO>> typeReference =
+                new ParameterizedTypeReference<List<MeasurementDTO>>() {};
 
         ResponseEntity<List<MeasurementDTO>> responseEntity = restTemplate.exchange(
                 getMeasurementsUrl,
@@ -62,11 +63,8 @@ public class Main {
         ServerResponse response = new ServerResponse(measurementDTOS);
 
         if (!response.getMeasurementDTOS().isEmpty()) {
-            if (!response.getMeasurementDTOS().isEmpty()) {
-                for (int i =0 ; i < QUANTITY; i++) {
-                    //добавляю 1000
-                    System.out.println(i + " - " + response.getMeasurementDTOS().get(i).getValue());
-                }
+            for (int i =0 ; i < QUANTITY; i++) {
+                System.out.println(i + " - " + response.getMeasurementDTOS().get(i).getValue());
             }
         }else {
             System.out.println(Collections.emptyList());
